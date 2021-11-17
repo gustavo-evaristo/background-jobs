@@ -15,7 +15,6 @@ class UserController {
             { name: 'Gustavo oitavo', email: '<gustavo@oitavo.com>' },
         ]
 
-
         const user = { name: 'Gustavo Primeiro', email: 'gug.henri1@gmail.com' };
 
         Queue.add(users);
