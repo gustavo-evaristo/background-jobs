@@ -3,13 +3,13 @@ import redisConfig from '../config/redis';
 import RegistrationMail from '../jobs/RegistrationMail';
 
 const Queue = new Bull(RegistrationMail.key,  { 
-    ...redisConfig, 
+    redis: redisConfig, 
     limiter: {
-        max: 1000,
+        max: 10,
         duration: 1000
     },
     defaultJobOptions: {
-        attempts: 2,
+        attempts: 3,
     }      
 });
 
