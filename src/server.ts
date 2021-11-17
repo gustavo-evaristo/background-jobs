@@ -1,16 +1,12 @@
-import 'dotenv/config';
 import express from 'express';
+import mailConfig from './config/mail';
+import UserController from './controllers/UserController';
+
 
 const app = express();
 
 app.use(express.json());
 
-app.post('/users', (req, res) => {
-    const { name, email, password  } = req.body;
+app.post('/users', UserController.create);
 
-    const user = { name, email, password };
-
-    return res.json(user);
-});
-
-app.listen(3333, () => console.log('server runnig on localhost:3333'));
+app.listen(3333, () => console.log('server is runnig'));
