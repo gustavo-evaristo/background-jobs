@@ -1,7 +1,5 @@
 import express from 'express';
-import mailConfig from './config/mail';
 import UserController from './controllers/UserController';
-
 
 const app = express();
 

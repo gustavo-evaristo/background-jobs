@@ -1,20 +1,27 @@
 import { Request, Response } from 'express';
-import Mail from '../utils/mail';
+import Queue from '../utils/queue';
 
 class UserController {
     async create(req: Request, res: Response){
-        const { name, email, password  } = req.body;
 
-        const user = { name, email, password };
+        const users = [
+            { name: 'Gustavo Primeiro', email: '<gustavo@primeiro.com>' },
+            { name: 'Gustavo segundo', email: '<gustavo@segundo.com>' },
+            { name: 'Gustavo terceiro', email: '<gustavo@terceiro.com>' },
+            { name: 'Gustavo quarto', email: '<gustavo@quarto.com>' },
+            { name: 'Gustavo quinto', email: '<gustavo@quinto.com>' },
+            { name: 'Gustavo sexto', email: '<gustavo@sexto.com>' },
+            { name: 'Gustavo setimo', email: '<gustavo@setimo.com>' },
+            { name: 'Gustavo oitavo', email: '<gustavo@oitavo.com>' },
+        ]
 
-        await Mail.sendMail({
-            from: 'Queue Test <queue@test.com.br>',
-            to: `${name} <${email}>`,
-            subject: 'Cadastro de usuário',
-            html: `Olá, ${name}, bem-vindo ao nosso sitema de filas :D`,
-        });
+
+        const user = { name: 'Gustavo Primeiro', email: 'gug.henri1@gmail.com' };
+
+        Queue.add(users);
 
         return res.json(user);
+
     }
 };
 
