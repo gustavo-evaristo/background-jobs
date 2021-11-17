@@ -5,8 +5,11 @@ import RegistrationMail from '../jobs/RegistrationMail';
 const Queue = new Bull(RegistrationMail.key,  { 
     ...redisConfig, 
     limiter: {
-        max: 1,
-        duration: 5000
+        max: 1000,
+        duration: 1000
+    },
+    defaultJobOptions: {
+        attempts: 2,
     }      
 });
 
